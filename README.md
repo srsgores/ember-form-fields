@@ -53,11 +53,12 @@ The following shows a simple login form using the ember-cli-html5-validation add
 {{/validatable-form}}
 ```
 
-### Usage with [ember-cli-accessible-icon](https://github.com/srsgores/ember-accessible-icon)
+### Adding Icons
 
-1. Make sure you have installed the [ember addon](https://github.com/srsgores/ember-accessible-icon)
+1. Optionally, you can install the [ember addon](https://github.com/srsgores/ember-accessible-icon) to make your dependencies clear
 2. Add ``icon="icon"`` to your ``{{form-section}}``: ex. ``{{form-section title="Register" icon="user"}}``
 
+**Make sure to set up your own icons**.  You can do this by using [a tool like icomoon](https://icomoon.io/app/#/select).
 
 ## Running
 
