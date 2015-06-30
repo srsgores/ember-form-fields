@@ -1,0 +1,14 @@
+{{#if title}}
+	<label for={{labelID}} class={{labelClassName}}>{{title}}
+		{{#if labelText}}
+			{{labelText}}
+		{{/if}}
+	</label>
+{{/if}}
+
+<div class={{controlsClassName}}>
+	{{#if tip}}
+		<span class="form-field-hint">{{tipTitle}}</span>
+	{{/if}}
+	{{yield}}
+</div>
