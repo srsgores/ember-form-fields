@@ -1,6 +1,6 @@
 {
   "name": "ember-form-fields",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Semantic HTML5 form wrappers for your forms",
   "directories": {
     "doc": "doc",

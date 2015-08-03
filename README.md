@@ -8,7 +8,7 @@ Out of the box, you can:
 * Group your form controls vertically or horizontally (with ``layout="vertical"`` or with ``layout="horizontal"``
 * Use proper ``legend`` elements on your ``fieldset``s
 
-In general: **proper HTML5 ``form``s**.
+In general: **proper HTML5 ``<form>``s**.
 
 ## Installation
 
@@ -25,6 +25,8 @@ In general: **proper HTML5 ``form``s**.
 ```
 
 ``layout`` simply adds the class to ``form-field``.  So you might add some styles like [these](https://github.com/srsgores/generator-stylus-boilerplate/blob/master/app/templates/styles/components/forms.styl). **No styles are shipped with this addon**; it is your responsibility to create styles.
+
+``title`` is used to provide the text for the associated label.
 
 (For more info on which ``autocomplete`` value to use, please [refer to MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input))
 
