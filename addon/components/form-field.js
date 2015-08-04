@@ -11,7 +11,7 @@ export default Ember.Component.extend({
 	title: null,
 	childInput: null,
 	hasChildInput: Ember.computed.notEmpty("childInput"),
-	didInsertElement: function() {
+	didInsertElement() {
 		let $firstInput = this.$().find("input[id], select[id], textarea[id]").first();
 		if (Ember.isArray($firstInput)) {
 			if (!Ember.isBlank($firstInput.attr("title"))) {
@@ -26,22 +26,21 @@ export default Ember.Component.extend({
 		return !Ember.isNone(this.get("title")) && !Ember.isEmpty(this.get("title"));
 	}),
 	isFocused: false, /* To be set from child components */
-	fullClassName: (function() {
+	fullClassName: Ember.computed("layoutDirection", function() {
 		return `${(this.get("defaultClassName"))}-${(this.get("layoutDirection"))}`;
-	}).property("layoutDirection"),
-	model: null,
+	}),
 	labelText: null,
 	tip: false,
 	tipTitle: null,
-	labelID: (function() {
+	labelID: Ember.computed("hasChildInput", function() {
 		if (this.get("hasChildInput")) {
 			return this.get("childInput")[0].id;
 		}
-	}).property("hasChildInput"),
-	labelClassName: (function() {
+	}),
+	labelClassName: Ember.computed("classNamespace", function() {
 		return `${this.get("classNamespace")}-label`;
-	}).property("classNamespace"),
-	controlsClassName: (function() {
-		return`${this.get("classNamespace")}-controls`;;
-	}).property("classNamespace")
+	}),
+	controlsClassName: Ember.computed("classNamespace", function() {
+		return`${this.get("classNamespace")}-controls`;
+	})
 });
