@@ -38,9 +38,7 @@ The following shows a simple login form using the ember-cli-html5-validation add
 {{#validatable-form action="login" class="login-form"}}
 	{{#form-section title="Login" icon="lock"}}
 		{{#if loginFailed}}
-			{{#alert-message type="error" title="Login failed"}}
-				<p>Invalid username or password.</p>
-			{{/alert-message}}
+			<p>Invalid username or password.</p>
 		{{/if}}
 		{{#form-field title="Username" layoutDirection="vertical"}}
 			{{input autofocus=true value=model.username required=true type="text" placeholder="Username" id="username"}}
@@ -49,11 +47,13 @@ The following shows a simple login form using the ember-cli-html5-validation add
 			{{input type="password" value=model.password required=true placeholder="Password" id="password"}}
 		{{/form-field}}
 	{{/form-section}}
-	<footer class="form-actions">
+	{{#form-actions}}
 		{{async-button class="button" icon="out2" title="Log in" isValid=isValid}}
-	</footer>
+	{{/form-actions}}
 {{/validatable-form}}
 ```
+
+The ``form-actions`` component is simply a short-hand notation for ``<footer class="form-actions">``.  As such, you may choose to omit the component from mark-up in favour of your own implentation.
 
 ### Adding Icons
 
