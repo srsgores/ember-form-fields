@@ -1,14 +1,16 @@
-{{#if title}}
-	<label for={{labelID}} class={{labelClassName}}>{{title}}
-		{{#if labelText}}
-			{{labelText}}
+{{#if hasLabel}}
+	<label for={{labelID}} class={{labelClassName}}>{{label}}
+		{{#if hasLabelText}}
+			<span class="{{labelTextClassName}}">{{labelText}}</span>
+		{{/if}}
+		{{#if tip}}
+			<dfn class="{{tipClassName}}">
+				<abbr title="{{tipTitle}}"></abbr>
+			</dfn>
 		{{/if}}
 	</label>
 {{/if}}
 
 <div class={{controlsClassName}}>
-	{{#if tip}}
-		<span class="form-field-hint">{{tipTitle}}</span>
-	{{/if}}
 	{{yield}}
 </div>

@@ -5,33 +5,33 @@ export default Ember.Component.extend({
 	layout: layout,
 	tagName: "section",
 	classNamespace: "form-field",
-	classNameBindings: ["fullClassName"],
+	classNameBindings: ["fullClassName", "hasLabel", "isFocused", "hasTip", "hasLabelText"],
 	layoutDirection: "horizontal",
-	defaultClassName: "form-field",
+	label: null,
 	title: null,
+	tip: null,
 	childInput: null,
+	labelText: null,
+	isFocused: false,
+	tipClassName: Ember.computed("classNameSpace", function() {
+		return `${this.get("classNamespace")}-tip`;
+	}),
 	hasChildInput: Ember.computed.notEmpty("childInput"),
-	didInsertElement() {
-		let $firstInput = this.$().find("input[id], select[id], textarea[id]").first();
-		if (Ember.isArray($firstInput)) {
-			if (!Ember.isBlank($firstInput.attr("title"))) {
-				this.set("tipTitle", $firstInput.attr("title"));
-			}
+	hasLabel: Ember.computed.notEmpty("label"),
+	hasLabelText: Ember.computed.notEmpty("labelText"),
+	hasTip: Ember.computed.notEmpty("tip"),
+	willInsertElement() {
+		if (!Ember.isArray(this.get("childInput"))) {
+			let $firstInput = this.$("input[id], select[id], textarea[id]").first();
+			Ember.assert("Form-field component requires a form control inside it for proper labelling", Ember.isArray($firstInput));
 			this.setProperties({
 				childInput: $firstInput
 			});
 		}
 	},
-	hasTitle: Ember.computed("title", function () {
-		return !Ember.isNone(this.get("title")) && !Ember.isEmpty(this.get("title"));
-	}),
-	isFocused: false, /* To be set from child components */
 	fullClassName: Ember.computed("layoutDirection", function() {
-		return `${(this.get("defaultClassName"))}-${(this.get("layoutDirection"))}`;
+		return `${(this.get("classNamespace"))}-${(this.get("layoutDirection"))}`;
 	}),
-	labelText: null,
-	tip: false,
-	tipTitle: null,
 	labelID: Ember.computed("hasChildInput", function() {
 		if (this.get("hasChildInput")) {
 			return this.get("childInput")[0].id;

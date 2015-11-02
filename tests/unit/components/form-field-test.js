@@ -37,12 +37,13 @@ test("it adds a label element, corresponding to the first form control in the te
 
 test("it creates a label with the correct `for` attribute, corresponding to the first form control", function(assert) {
 	let component = this.subject();
-	component.set("title", "A sample title");
+	component.set("label", "A sample label");
 	this.render();
-	assert.ok(this.$().find("label[for='a-sample-title']").length);
+	assert.equal(this.$("label[for='a-sample-label']").length, 1);
 });
 
 test("it warns the user when no form control elements can be found in the template block", function(assert) {
-
+	this.render();
+	assert.equal(this.$("form-field-label").length, 0);
 });
 
